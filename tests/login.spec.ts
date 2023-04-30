@@ -11,7 +11,13 @@ test.describe("Login Page Tests", () => {
     await loginPage.goToLoginPage();
   });
 
-  test("Successful Login With Email and Password", async ({ loginPage, overviewPage }) => {
+  test("Successful Login With Email and Password", async ({ loginPage, overviewPage }, testInfo) => {
+    testInfo.annotations.push({ type: 'test_id', description: '1' });
+    testInfo.annotations.push({ type: 'test_key', description: 'LOGIN-1' });
+    testInfo.annotations.push({ type: 'test_summary', description: 'Successful Login' });
+    testInfo.annotations.push({ type: 'requirements', description: 'Environment Variables Loaded' });
+    testInfo.annotations.push({ type: 'test_description', description: 'Successful Login With Email and Password' });
+
     const email = EnvManger.GetAdminEmail();
     const password = EnvManger.GetAdminPassword();
 
