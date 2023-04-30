@@ -1,8 +1,8 @@
 pipeline {
-    agent any
+    agent none
     environment {
         ENV = 'prod'
-        ALLURE_RESULTS_DIR = 'allure-report'
+        ALLURE_RESULTS_DIR = 'playwright-report'
     }
     stages {
         stage('e2e-tests') {
@@ -10,13 +10,13 @@ pipeline {
             steps {
                 sh 'npm install -g pnpm'
                 sh 'pnpm install'
-                sh 'pnpm run test --project=chromium'
+                sh 'pnpm run test'
             }
         }
     }
     post {
         always {
-            allure results: [[path: 'allure-report']]
+            allure results: [[path: 'playwright-report']]
         }
     }
 }
