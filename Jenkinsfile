@@ -1,5 +1,7 @@
 pipeline {
-    agent 'linux'
+    agent {
+        label 'linux'
+    }
     environment {
         ENV = 'prod'
         ALLURE_RESULTS_DIR = 'playwright-report'
