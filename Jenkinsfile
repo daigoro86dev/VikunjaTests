@@ -23,7 +23,8 @@ pipeline {
                 properties: [],
                 reportBuildPolicy: 'ALWAYS',
                 results: [[path: 'playwright-report']]
-            ])
+                ])
+            }
         }
     }
 }
