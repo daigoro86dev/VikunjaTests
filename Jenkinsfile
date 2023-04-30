@@ -7,8 +7,13 @@ pipeline {
         stage('e2e-tests') {
             steps {
                 sh 'npm install'
-                sh 'npx playwright test'
+                sh 'npx playwright test --project=chromium'
             }
+        }
+    }
+    post {
+        always {
+            archiveArtifacts artifacts: 'playwright-report/index.html', fingerprint: true
         }
     }
 }
