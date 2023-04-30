@@ -13,16 +13,8 @@ pipeline {
     }
     post {
         always {
-            archiveArtifacts artifacts: 'playwright-report/index.html', fingerprint: true
-            publishHTML (
-                target : [allowMissing: false,
-                alwaysLinkToLastBuild: true,
-                keepAll: true,
-                reportDir: 'playwright-report',
-                reportFiles: 'index.html',
-                reportName: 'VikunjaTestReport',
-                reportTitles: 'Vikunja Tests']
-            )
+            archiveArtifacts artifacts: 'playwright-report/results.xml', fingerprint: true
+            junit 'playwright-report/results.xml'
         }
     }
 }
