@@ -16,7 +16,7 @@ export default defineConfig({
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [['allure-playwright', {
     detail: true,
-    outputFolder: "playwright-report",
+    outputFolder: "allure-report",
     suiteTitle: false,
   }], ['line']],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
