@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('e2e-tests') {
             steps {
-                sg 'npm install -g pnpm'
+                sh 'npm install -g pnpm'
                 sh 'pnpm install'
                 sh 'pnpm run test --project=chromium'
             }
@@ -16,15 +16,7 @@ pipeline {
     post {
         always {
             archiveArtifacts artifacts: 'playwright-report/*', fingerprint: true
-            script {
-                allure([
-                includeProperties: false,
-                jdk: '',
-                properties: [],
-                reportBuildPolicy: 'ALWAYS',
-                results: [[path: 'playwright-report']]
-                ])
-            }
+            allure results: [[path: 'playwright-report']]
         }
     }
 }
