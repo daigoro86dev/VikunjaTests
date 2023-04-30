@@ -10,7 +10,7 @@ pipeline {
             steps {
                 sh 'npm install -g pnpm'
                 sh 'pnpm install'
-                sh 'pnpm run test'
+                sh 'pnpx playwright test'
             }
         }
     }
