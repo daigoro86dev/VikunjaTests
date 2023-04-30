@@ -2,6 +2,7 @@ pipeline {
     agent any
     environment {
         ENV = 'prod'
+        ALLURE_RESULTS_DIR = 'allure-report'
     }
     stages {
         stage('e2e-tests') {
@@ -15,7 +16,7 @@ pipeline {
     }
     post {
         always {
-            allure results: [[path: './allure-report']]
+            allure results: [[path: 'allure-report']]
         }
     }
 }
