@@ -1,5 +1,5 @@
 pipeline {
-    agent none
+    agent any
     environment {
         ENV = 'prod'
         ALLURE_RESULTS_DIR = 'playwright-report'
