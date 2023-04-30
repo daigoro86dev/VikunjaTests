@@ -3,6 +3,7 @@ pipeline {
     environment {
         ENV = 'prod'
         ALLURE_RESULTS_DIR = "playwright-report"
+        JAVA_HOME= "/opt/java/openjdk"
     }
     stages {
         stage('e2e-tests') {
@@ -15,7 +16,7 @@ pipeline {
     }
     post {
         always {
-            archiveArtifacts artifacts: 'playwright-report/*', fingerprint: true
+            archiveArtifacts artifacts: 'playwright-report/**', fingerprint: true
             allure results: [[path: 'playwright-report']]
         }
     }
