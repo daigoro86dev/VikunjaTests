@@ -14,9 +14,4 @@ pipeline {
             }
         }
     }
-    post {
-        always {
-            allure results: [[path: 'playwright-report']]
-        }
-    }
 }
