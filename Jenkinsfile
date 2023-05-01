@@ -14,7 +14,9 @@ pipeline {
             }
         }
         stage('archive') {
-            archiveArtifacts artifacts: 'playwright-report', fingerprint: true
+            steps {
+                archiveArtifacts artifacts: 'playwright-report', fingerprint: true
+            }
         }
     }
     post {
