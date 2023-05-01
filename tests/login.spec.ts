@@ -3,10 +3,6 @@ import EnvManger from '../src/utils/EnvManager';
 
 test.describe("Login Page Tests", () => {
 
-  test.beforeAll(() => {
-    EnvManger.LoadEnv();
-  });
-
   test.beforeEach(async ({ loginPage }) => {
     await loginPage.goToLoginPage();
   });
