@@ -2,7 +2,6 @@ pipeline {
     agent any
     environment {
         ENV = 'prod'
-        ALLURE_RESULTS_DIR = 'playwright-report'
     }
     stages {
         stage('e2e-tests') {
@@ -10,18 +9,15 @@ pipeline {
             steps {
                 sh 'npm install -g pnpm'
                 sh 'pnpm install'
-                sh 'pnpx playwright test'
+                sh 'ALLURE_RESULTS_DIR=playwright-report pnpx playwright test'
             }
         }
         stage('archive') {
+            agent any
             steps {
                 archiveArtifacts artifacts: 'playwright-report', fingerprint: true
+                allure results: [[path: 'playwright-report']]
             }
-        }
-    }
-    post {
-        always {
-            allure results: [[path: 'playwright-report']]
         }
     }
 }
