@@ -16,7 +16,7 @@ pipeline {
     }
     post {
         always {
-            archiveArtifacts artifacts: 'playwright-report/**', fingerprint: true
+            archiveArtifacts artifacts: 'playwright-report', fingerprint: true
             allure results: [[path: 'playwright-report']]
         }
     }
