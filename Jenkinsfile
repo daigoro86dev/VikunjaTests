@@ -13,10 +13,11 @@ pipeline {
                 sh 'pnpm run test --project=chromium'
             }
         }
-    }
-    post {
-        always {
-            allure results: [[path: 'playwright-report']]
+        stage('allure') {
+            agent any
+            steps {
+                allure results: [[path: 'playwright-report']]
+            }
         }
     }
 }
