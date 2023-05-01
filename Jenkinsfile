@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         ENV = 'prod'
-        ALLURE_RESULTS_DIR = 'playwright-report'
+        ALLURE_RESULTS_DIR = 'allure-report'
     }
     stages {
         stage('e2e-tests') {
@@ -16,8 +16,8 @@ pipeline {
     }
     post {
         always {
-            archiveArtifacts artifacts: 'playwright-report', fingerprint: true
-            allure results: [[path: 'playwright-report']]
+            archiveArtifacts artifacts: 'allure-report', fingerprint: true
+            allure results: [[path: 'allure-report']]
         }
     }
 }
